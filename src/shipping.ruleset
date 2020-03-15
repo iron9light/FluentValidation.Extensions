@@ -5,11 +5,17 @@
     <!-- XmlCommentAnalysisDisabled -->
     <Rule Id="SA0001"  Action="None" />
   </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpacingRules">
+    <!-- ClosingParenthesisMustBeSpacedCorrectly -->
+    <Rule Id="SA1009" Action="None" />
+  </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.ReadabilityRules">
     <!-- PrefixLocalCallsWithThis -->
     <Rule Id="SA1101" Action="None" />
     <!-- DoNotPrefixLocalMembersWithThis -->
     <Rule Id="SX1101" Action="Warning" />
+    <!-- ClosingParenthesisMustBeOnLineOfLastParameter -->
+    <Rule Id="SA1111" Action="None" />
     <!-- ParameterMustNotSpanMultipleLines -->
     <Rule Id="SA1118" Action="None" />
   </Rules>

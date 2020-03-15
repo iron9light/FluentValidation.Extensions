@@ -14,6 +14,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  group: common
   buildConfiguration: 'Release'
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   sonarProjectKey: 'iron9light_FluentValidation.Extensions'

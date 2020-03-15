@@ -58,7 +58,7 @@ And your favorite fluent style:
 IValidator<MyOptions> validator = new MyOptionsValidator();
 services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { })
-    .FluentValidate.With<MyOptionsValidator>(validator); // ❗ Register a validator type
+    .FluentValidate.With<MyOptionsValidator>(); // ❗ Register a validator type
 ```
 
 ```csharp

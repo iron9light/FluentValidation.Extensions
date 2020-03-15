@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <IsTestProject Condition=" '$(IsTestProject)' == '' AND $(MSBuildProjectName.ToLower().EndsWith('.tests')) ">true</IsTestProject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsTestProject)' != 'true' ">
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)/shipping.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)/tests.ruleset</CodeAnalysisRuleSet>
+    <CoverletOutputFormat>opencover,cobertura</CoverletOutputFormat>
+    <Exclude>[xunit.*]*</Exclude>
+    <ExcludeByAttribute>ObsoleteAttribute,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+    <!-- Ensure we preserve each coverlet output file per target framework: https://github.com/tonerdo/coverlet/issues/177 -->
+    <CoverletOutput>$(OutputPath)/</CoverletOutput>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(IsTestProject)' == 'true' ">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" PrivateAssets="All" />
+    <PackageReference Include="FluentAssertions" Version="5.10.2" />
+    <PackageReference Include="FluentAssertions.Analyzers" Version="0.11.4" PrivateAssets="All" />
+    <PackageReference Include="coverlet.msbuild" Version="2.8.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

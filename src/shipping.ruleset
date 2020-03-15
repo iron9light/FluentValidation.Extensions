@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Shipping analyzers rules" ToolsVersion="15.0">
+  <!-- For detailed rule descriptions, please refer to https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/DOCUMENTATION.md -->
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpecialRules">
+    <!-- XmlCommentAnalysisDisabled -->
+    <Rule Id="SA0001"  Action="None" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.ReadabilityRules">
+    <!-- PrefixLocalCallsWithThis -->
+    <Rule Id="SA1101" Action="None" />
+    <!-- DoNotPrefixLocalMembersWithThis -->
+    <Rule Id="SX1101" Action="Warning" />
+    <!-- ParameterMustNotSpanMultipleLines -->
+    <Rule Id="SA1118" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.OrderingRules">
+    <!-- UsingDirectivesMustBePlacedCorrectly -->
+    <Rule Id="SA1200" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.NamingRules">
+    <!-- FieldNamesMustNotBeginWithUnderscore -->
+    <Rule Id="SA1309" Action="None" />
+    <!-- FieldNamesMustBeginWithUnderscore -->
+    <Rule Id="SX1309" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.DocumentationRules">
+    <!-- ElementsMustBeDocumented -->
+    <Rule Id="SA1600" Action="None" />
+    <!-- FileMustHaveHeader -->
+    <Rule Id="SA1633" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers.ApiDesignGuidelines">
+    <!-- DoNotDirectlyAwaitATask -->
+    <Rule Id="CA2007" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.NetCore.Analyzers" RuleNamespace="Microsoft.NetCore.Analyzers.Runtime">
+    <!-- DoNotPassLiteralsAsLocalizedParameters -->
+    <Rule Id="CA1303" Action="None" />
+  </Rules>
+</RuleSet>

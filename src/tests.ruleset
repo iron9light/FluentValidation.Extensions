@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Tests analyzers rules" ToolsVersion="15.0">
+  <Include Path="shipping.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.VisualStudio.Threading.Analyzers" RuleNamespace="Microsoft.VisualStudio.Threading.Analyzers">
+    <!-- Call async methods when in an async method -->
+    <Rule Id="VSTHRD103" Action="Hidden" />
+    <!-- Use .ConfigureAwait(bool) -->
+    <Rule Id="VSTHRD111" Action="None" />
+    <!-- Use Async naming convention -->
+    <Rule Id="VSTHRD200" Action="Hidden" />
+  </Rules>
+</RuleSet>

@@ -1,0 +1,93 @@
+trigger:
+  branches:
+    include:
+    - master
+    - rel/v*
+  paths:
+    include:
+    - '*'
+    exclude:
+    - 'doc/*'
+    - '*.md'
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  sonarProjectKey: 'iron9light_FluentValidation.Extensions'
+  sonarPullrequestGithubRepository: 'iron9light/FluentValidation.Extensions'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core 3.x'
+  inputs:
+    packageType: sdk
+    version: 3.x
+
+- script: dotnet tool install --tool-path . nbgv
+  displayName: 'Install NBGV tool'
+
+- script: nbgv cloud
+  displayName: Set Version
+
+- script: dotnet tool install --tool-path . dotnet-sonarscanner
+  displayName: 'Install SonarScanner tool'
+
+- script: dotnet-sonarscanner begin /k:"$(sonarProjectKey)" /o:"iron9light-github" /v:"$(Build.BuildNumber)" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$(sonar.token)" /d:sonar.cs.opencover.reportsPaths="$(Build.SourcesDirectory)/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="$(Agent.TempDirectory)/*.trx" /d:sonar.pullrequest.key=$(System.PullRequest.PullRequestNumber) /d:sonar.pullrequest.branch="$(System.PullRequest.SourceBranch)" /d:sonar.pullrequest.base="$(System.PullRequest.TargetBranch)" /d:sonar.pullrequest.github.repository="$(sonarPullrequestGithubRepository)"
+  displayName: 'SonarScanner begin (PR)'
+  condition: variables['System.PullRequest.SourceBranch']
+
+- script: dotnet-sonarscanner begin /k:"$(sonarProjectKey)" /o:"iron9light-github" /v:"$(Build.BuildNumber)" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$(sonar.token)" /d:sonar.cs.opencover.reportsPaths="$(Build.SourcesDirectory)/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="$(Agent.TempDirectory)/*.trx" /d:sonar.branch.name="$(Build.SourceBranchName)"
+  displayName: 'SonarScanner begin'
+  condition: not(variables['System.PullRequest.SourceBranch'])
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: src
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test $(buildConfiguration)'
+  inputs:
+    command: test
+    projects: '**/*.sln'
+    arguments: '--configuration $(buildConfiguration) --no-build /p:CollectCoverage=true'
+    workingDirectory: src
+
+- script: dotnet-sonarscanner end /d:sonar.login="$(sonar.token)"
+  displayName: 'SonarScanner end'
+
+- task: PublishCodeCoverageResults@1
+  displayName: Publish Coverage
+  inputs:
+    codeCoverageTool: cobertura
+    summaryFileLocation: $(Build.SourcesDirectory)/**/coverage.cobertura.xml
+
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    command: pack
+    packagesToPack: '**/*.csproj'
+    configuration: $(BuildConfiguration)
+    packDirectory: $(Build.ArtifactStagingDirectory)/artifacts
+    nobuild: true
+    verbosityPack: Minimal
+  condition: not(variables['System.PullRequest.SourceBranch'])
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish Package Artifacts
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)/artifacts
+    artifactType: container
+    artifactName: Packages
+  condition: not(variables['System.PullRequest.SourceBranch'])
+
+- task: NuGetCommand@2
+  displayName: 'GitHub packages NuGet push'
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    nuGetFeedType: external
+    publishFeedCredentials: GitHubPackagesNuGetConnection
+  condition: not(variables['System.PullRequest.SourceBranch'])

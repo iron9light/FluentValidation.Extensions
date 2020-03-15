@@ -58,14 +58,14 @@ And your favorite fluent style:
 IValidator<MyOptions> validator = new MyOptionsValidator();
 services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { })
-    .FluentValidate.With<MyOptionsValidator>(); // ❗ Register a validator type
+    .FluentValidate().With<MyOptionsValidator>(); // ❗ Register a validator type
 ```
 
 ```csharp
 IValidator<MyOptions> validator = new MyOptionsValidator();
 services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { })
-    .FluentValidate.With(validator); // ❗ Register a validator instance
+    .FluentValidate().With(validator); // ❗ Register a validator instance
 ```
 
 ```csharp
@@ -73,5 +73,5 @@ IValidator<MyOptions> validator = new MyOptionsValidator();
 services.AddTransient<IValidator<MyOptions>, MyOptionsValidator>();
 services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { })
-    .FluentValidate.With(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>); // ❗ Register a validator creator function
+    .FluentValidate().With(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>); // ❗ Register a validator creator function
 ```

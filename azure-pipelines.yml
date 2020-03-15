@@ -14,11 +14,15 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  group: common
-  buildConfiguration: 'Release'
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-  sonarProjectKey: 'iron9light_FluentValidation.Extensions'
-  sonarPullrequestGithubRepository: 'iron9light/FluentValidation.Extensions'
+- group: common
+- name: buildConfiguration
+  value: Release
+- name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
+  value: true
+- name: sonarProjectKey
+  value: 'iron9light_FluentValidation.Extensions'
+- name: sonarPullrequestGithubRepository
+  value: 'iron9light/FluentValidation.Extensions'
 
 steps:
 - task: UseDotNet@2

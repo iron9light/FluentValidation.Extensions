@@ -10,7 +10,7 @@
 
 [Microsoft.Extensions.Options](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options#options-validation) validation with [FluentValidation](https://fluentvalidation.net).
 
-[![NuGet](https://img.shields.io/nuget/vpre/FluentValidation.Extensions.Options.svg)](https://www.nuget.org/packages/FluentValidation.Extensions.Options/)
+[![NuGet](https://img.shields.io/nuget/vpre/IL.FluentValidation.Extensions.Options.svg)](https://www.nuget.org/packages/IL.FluentValidation.Extensions.Options/)
 
 ```csharp
 public class MyOptionsValidator : AbstractValidator<MyOptions> {

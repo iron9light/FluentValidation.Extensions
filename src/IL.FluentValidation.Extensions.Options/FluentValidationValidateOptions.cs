@@ -1,8 +1,10 @@
 using System.Linq;
 
+using FluentValidation;
+
 using Microsoft.Extensions.Options;
 
-namespace FluentValidation.Extensions.Options
+namespace IL.FluentValidation.Extensions.Options
 {
     public class FluentValidationValidateOptions<TOptions>
         : IValidateOptions<TOptions>

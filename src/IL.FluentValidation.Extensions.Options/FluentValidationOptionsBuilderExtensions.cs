@@ -1,9 +1,11 @@
 using System;
 
+using FluentValidation;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace FluentValidation.Extensions.Options
+namespace IL.FluentValidation.Extensions.Options
 {
     public static class FluentValidationOptionsBuilderExtensions
     {

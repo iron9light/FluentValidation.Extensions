@@ -6,7 +6,7 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=iron9light_FluentValidation.Extensions&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=iron9light_FluentValidation.Extensions)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=iron9light_FluentValidation.Extensions&metric=security_rating)](https://sonarcloud.io/dashboard?id=iron9light_FluentValidation.Extensions)
 
-## FluentValidation.Extensions.Options
+## IL.FluentValidation.Extensions.Options
 
 [Microsoft.Extensions.Options](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options#options-validation) validation with [FluentValidation](https://fluentvalidation.net).
 
@@ -16,6 +16,8 @@
 public class MyOptionsValidator : AbstractValidator<MyOptions> {
     // ...
 }
+
+using IL.FluentValidation.Extensions.Options;
 
 // Registration
 services.AddOptions<MyOptions>("optionalOptionsName")

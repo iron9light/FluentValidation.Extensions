@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29201.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Extensions.Options", "FluentValidation.Extensions.Options\FluentValidation.Extensions.Options.csproj", "{636CCB78-755B-4053-8D1B-8D3E3BD3B11B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IL.FluentValidation.Extensions.Options", "IL.FluentValidation.Extensions.Options\IL.FluentValidation.Extensions.Options.csproj", "{636CCB78-755B-4053-8D1B-8D3E3BD3B11B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Extensions.Options.Tests", "FluentValidation.Extensions.Options.Tests\FluentValidation.Extensions.Options.Tests.csproj", "{4E7FC613-035A-4AB2-A363-BBF2432D2FF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IL.FluentValidation.Extensions.Options.Tests", "IL.FluentValidation.Extensions.Options.Tests\IL.FluentValidation.Extensions.Options.Tests.csproj", "{4E7FC613-035A-4AB2-A363-BBF2432D2FF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

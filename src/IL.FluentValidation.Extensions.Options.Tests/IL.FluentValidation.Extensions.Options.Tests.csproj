@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FluentValidation.Extensions.Options\FluentValidation.Extensions.Options.csproj" />
+    <ProjectReference Include="..\IL.FluentValidation.Extensions.Options\IL.FluentValidation.Extensions.Options.csproj" />
   </ItemGroup>
 
 </Project>

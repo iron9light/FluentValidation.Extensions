@@ -1,4 +1,4 @@
-namespace FluentValidation.Extensions.Options.Tests
+namespace IL.FluentValidation.Extensions.Options.Tests
 {
     public class MyOptions
     {

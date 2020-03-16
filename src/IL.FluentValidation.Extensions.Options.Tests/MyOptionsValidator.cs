@@ -1,4 +1,6 @@
-namespace FluentValidation.Extensions.Options.Tests
+using FluentValidation;
+
+namespace IL.FluentValidation.Extensions.Options.Tests
 {
 #pragma warning disable CA1710 // Identifiers should have correct suffix
     public class MyOptionsValidator

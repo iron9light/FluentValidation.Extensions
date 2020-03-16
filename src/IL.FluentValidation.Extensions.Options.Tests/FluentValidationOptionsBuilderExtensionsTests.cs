@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 using Xunit;
 
-namespace FluentValidation.Extensions.Options.Tests
+namespace IL.FluentValidation.Extensions.Options.Tests
 {
     public class FluentValidationOptionsBuilderExtensionsTests
     {

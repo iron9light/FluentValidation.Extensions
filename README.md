@@ -51,7 +51,7 @@ IValidator<MyOptions> validator = new MyOptionsValidator();
 services.AddTransient<IValidator<MyOptions>, MyOptionsValidator>();
 services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { })
-    .Validate(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>); // ❗ Register a validator creator function
+    .Validate(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>()); // ❗ Register a validator creator function
 ```
 
 And your favorite fluent style:
@@ -75,5 +75,5 @@ IValidator<MyOptions> validator = new MyOptionsValidator();
 services.AddTransient<IValidator<MyOptions>, MyOptionsValidator>();
 services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { })
-    .FluentValidate().With(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>); // ❗ Register a validator creator function
+    .FluentValidate().With(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>()); // ❗ Register a validator creator function
 ```

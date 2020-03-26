@@ -1,6 +1,6 @@
 # [FluentValidation](https://fluentvalidation.net) integrate with [Microsoft.Extensions](https://github.com/dotnet/extensions)
 
-[![Build Status](https://iron9light.visualstudio.com/github/_apis/build/status/iron9light.FluentValidation.Extensions?branchName=rel/v8)](https://iron9light.visualstudio.com/github/_build/latest?definitionId=4&branchName=rel/v8)
+[![Build Status](https://iron9light.visualstudio.com/github/_apis/build/status/iron9light.FluentValidation.Extensions?branchName=rel%2Fv8)](https://iron9light.visualstudio.com/github/_build/latest?definitionId=5&branchName=rel%2Fv8)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=iron9light_FluentValidation.Extensions&metric=ncloc)](https://sonarcloud.io/dashboard?id=iron9light_FluentValidation.Extensions)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=iron9light_FluentValidation.Extensions&metric=coverage)](https://sonarcloud.io/dashboard?id=iron9light_FluentValidation.Extensions)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=iron9light_FluentValidation.Extensions&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=iron9light_FluentValidation.Extensions)

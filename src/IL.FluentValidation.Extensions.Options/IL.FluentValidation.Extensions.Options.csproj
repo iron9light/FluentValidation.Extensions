@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Description>Microsoft.Extensions.Options validation with FluentValidation</Description>
+    <PackageTags>ASP.NET;AspNetCore;Options;FluentValidation;Validation</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

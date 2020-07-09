@@ -2,8 +2,10 @@
 <RuleSet Name="Tests analyzers rules" ToolsVersion="15.0">
   <Include Path="shipping.ruleset" Action="Default" />
   <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers">
-    <!-- IdentifiersShouldNotContainUnderscores -->
+    <!-- Identifiers should not contain underscores -->
     <Rule Id="CA1707" Action="None" />
+    <!-- Mark members as static -->
+    <Rule Id="CA1822" Action="None" />
   </Rules>
   <Rules AnalyzerId="Microsoft.VisualStudio.Threading.Analyzers" RuleNamespace="Microsoft.VisualStudio.Threading.Analyzers">
     <!-- Call async methods when in an async method -->

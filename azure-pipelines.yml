@@ -26,10 +26,10 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET Core 3.x'
+  displayName: 'Use .NET 5'
   inputs:
     packageType: sdk
-    version: 3.x
+    version: 5.x
 
 - script: dotnet tool install --tool-path . nbgv
   displayName: 'Install NBGV tool'
@@ -96,3 +96,4 @@ steps:
     nuGetFeedType: external
     publishFeedCredentials: GitHubPackagesNuGetConnection
   condition: and(succeeded(), not(variables['System.PullRequest.SourceBranch']))
+  continueOnError: true

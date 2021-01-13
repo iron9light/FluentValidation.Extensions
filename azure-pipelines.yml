@@ -48,7 +48,7 @@ steps:
   displayName: 'SonarScanner begin'
   condition: and(succeeded(), not(variables['System.PullRequest.SourceBranch']))
 
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) -p:RepositoryBranch="$(Build.SourceBranchName)"
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: src
 

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
+    <IsPackable>false</IsPackable>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)tests.ruleset</CodeAnalysisRuleSet>
     <CoverletOutputFormat>opencover,cobertura</CoverletOutputFormat>
     <Exclude>[xunit.*]*</Exclude>
@@ -17,12 +18,14 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(IsTestProject)' == 'true' ">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+    <PackageReference Include="AutoFixture.Xunit2" Version="4.15.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="Moq" Version="4.15.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" PrivateAssets="All" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="FluentAssertions.Analyzers" Version="0.11.4" PrivateAssets="All" />
-    <PackageReference Include="coverlet.msbuild" Version="2.9.0" PrivateAssets="All" />
+    <PackageReference Include="coverlet.msbuild" Version="3.0.0" PrivateAssets="All" />
 
     <Content Include="$(MSBuildThisFileDirectory)xunit.runner.json" CopyToOutputDirectory="Always" />
   </ItemGroup>

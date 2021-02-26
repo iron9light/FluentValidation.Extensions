@@ -2,6 +2,8 @@ using System;
 
 using FluentAssertions;
 
+using FluentValidation;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -107,11 +109,24 @@ namespace IL.FluentValidation.Extensions.Options.Tests
                 );
         }
 
+        [Fact]
+        public void FluentValidate_with_default_validator_will_pass()
+        {
+            Validate_passing_valid_options_will_pass(x => x.ValidateFluent());
+        }
+
+        [Fact]
+        public void FluentValidate_with_default_validator_will_throw_exception()
+        {
+            Validate_passing_invalid_options_will_throw_exception(x => x.ValidateFluent());
+        }
+
         private void Validate_passing_valid_options_will_pass(
             Func<OptionsBuilder<MyOptions>, OptionsBuilder<MyOptions>> addValidation
             )
         {
             var services = new ServiceCollection();
+            services.AddValidatorsFromAssemblyContaining<MyOptionsValidator>();
             var optionsBuilder = services.AddOptions<MyOptions>()
                 .Configure(options => options.TrueValue = true);
             addValidation(optionsBuilder);
@@ -125,6 +140,7 @@ namespace IL.FluentValidation.Extensions.Options.Tests
             )
         {
             var services = new ServiceCollection();
+            services.AddValidatorsFromAssemblyContaining<MyOptionsValidator>();
             var optionsBuilder = services.AddOptions<MyOptions>()
                 .Configure(options => options.TrueValue = false);
             addValidation(optionsBuilder);

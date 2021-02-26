@@ -79,6 +79,20 @@ namespace IL.FluentValidation.Extensions.Options
             return optionsBuilder;
         }
 
+        public static OptionsBuilder<TOptions> ValidateFluent<TOptions>(
+            this OptionsBuilder<TOptions> optionsBuilder
+        )
+            where TOptions : class
+        {
+            if (optionsBuilder == null)
+            {
+                throw new ArgumentNullException(nameof(optionsBuilder));
+            }
+
+            optionsBuilder.Services.AddTransient<IValidateOptions<TOptions>>(provider => new FluentValidationValidateOptions<TOptions>(optionsBuilder.Name, provider.GetRequiredService<IValidator<TOptions>>()));
+            return optionsBuilder;
+        }
+
         public static FluentValidationOptionsBuilderWrapper<TOptions> FluentValidate<TOptions>(this OptionsBuilder<TOptions> optionsBuilder)
             where TOptions : class
             => new FluentValidationOptionsBuilderWrapper<TOptions>(optionsBuilder);

@@ -110,23 +110,34 @@ namespace IL.FluentValidation.Extensions.Options.Tests
         }
 
         [Fact]
-        public void FluentValidate_with_default_validator_will_pass()
+        public void FluentValidate_with_default_validator_passing_valid_options_will_pass()
         {
-            Validate_passing_valid_options_will_pass(x => x.ValidateFluent());
+            Validate_passing_valid_options_will_pass(
+                x => x.ValidateWithFluentValidator(),
+                addValidatorsFromAssembly: true
+                );
         }
 
         [Fact]
-        public void FluentValidate_with_default_validator_will_throw_exception()
+        public void FluentValidate_with_default_validator_passing_invalid_options_will_throw_exception()
         {
-            Validate_passing_invalid_options_will_throw_exception(x => x.ValidateFluent());
+            Validate_passing_invalid_options_will_throw_exception(
+                x => x.ValidateWithFluentValidator(),
+                addValidatorsFromAssembly: true
+                );
         }
 
         private void Validate_passing_valid_options_will_pass(
-            Func<OptionsBuilder<MyOptions>, OptionsBuilder<MyOptions>> addValidation
+            Func<OptionsBuilder<MyOptions>, OptionsBuilder<MyOptions>> addValidation,
+            bool addValidatorsFromAssembly = false
             )
         {
             var services = new ServiceCollection();
-            services.AddValidatorsFromAssemblyContaining<MyOptionsValidator>();
+            if (addValidatorsFromAssembly)
+            {
+                services.AddValidatorsFromAssemblyContaining(GetType());
+            }
+
             var optionsBuilder = services.AddOptions<MyOptions>()
                 .Configure(options => options.TrueValue = true);
             addValidation(optionsBuilder);
@@ -136,11 +147,16 @@ namespace IL.FluentValidation.Extensions.Options.Tests
         }
 
         private void Validate_passing_invalid_options_will_throw_exception(
-            Func<OptionsBuilder<MyOptions>, OptionsBuilder<MyOptions>> addValidation
+            Func<OptionsBuilder<MyOptions>, OptionsBuilder<MyOptions>> addValidation,
+            bool addValidatorsFromAssembly = false
             )
         {
             var services = new ServiceCollection();
-            services.AddValidatorsFromAssemblyContaining<MyOptionsValidator>();
+            if (addValidatorsFromAssembly)
+            {
+                services.AddValidatorsFromAssemblyContaining(GetType());
+            }
+
             var optionsBuilder = services.AddOptions<MyOptions>()
                 .Configure(options => options.TrueValue = false);
             addValidation(optionsBuilder);

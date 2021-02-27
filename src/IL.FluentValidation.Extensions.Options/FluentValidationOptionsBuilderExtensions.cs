@@ -79,9 +79,9 @@ namespace IL.FluentValidation.Extensions.Options
             return optionsBuilder;
         }
 
-        public static OptionsBuilder<TOptions> ValidateFluent<TOptions>(
+        public static OptionsBuilder<TOptions> ValidateWithFluentValidator<TOptions>(
             this OptionsBuilder<TOptions> optionsBuilder
-        )
+            )
             where TOptions : class
         {
             if (optionsBuilder == null)
@@ -89,7 +89,12 @@ namespace IL.FluentValidation.Extensions.Options
                 throw new ArgumentNullException(nameof(optionsBuilder));
             }
 
-            optionsBuilder.Services.AddTransient<IValidateOptions<TOptions>>(provider => new FluentValidationValidateOptions<TOptions>(optionsBuilder.Name, provider.GetRequiredService<IValidator<TOptions>>()));
+            optionsBuilder.Services.AddTransient<IValidateOptions<TOptions>>(serviceProvider =>
+            {
+                var validator = serviceProvider.GetRequiredService<IValidator<TOptions>>();
+                return new FluentValidationValidateOptions<TOptions>(optionsBuilder.Name, validator);
+            });
+
             return optionsBuilder;
         }
 

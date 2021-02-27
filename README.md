@@ -54,6 +54,15 @@ services.AddOptions<MyOptions>("optionalOptionsName")
     .Validate(serviceProvider => serviceProvider.GetRequiredService<IValidator<MyOptions>>()); // ❗ Register a validator creator function
 ```
 
+If you have already registered an `IValidator<T>` in the service container (e.g. using [FluentValidation.DependencyInjectionExtensions](https://www.nuget.org/packages/FluentValidation.DependencyInjectionExtensions/)):
+
+```csharp
+services.AddValidatorsFromAssembly(assembly);
+services.AddOptions<MyOptions>("optionalOptionsName")
+    .Configure(o => { })
+    .ValidateWithFluentValidator(); // ❗ Register IValidator<MyOptions>
+```
+
 And your favorite fluent style:
 
 ```csharp

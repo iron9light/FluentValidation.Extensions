@@ -60,6 +60,13 @@ steps:
     arguments: '--configuration $(buildConfiguration) --no-build /p:CollectCoverage=true'
     workingDirectory: src
 
+- task: JavaToolInstaller@0
+  displayName: 'install Java 11 for sonarscanner'
+  inputs:
+    versionSpec: "11"
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
 - script: dotnet-sonarscanner end /d:sonar.login="$(sonar.token)"
   displayName: 'SonarScanner end'
 

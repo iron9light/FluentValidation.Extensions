@@ -135,7 +135,7 @@ namespace IL.FluentValidation.Extensions.Options.Tests
             var services = new ServiceCollection();
             if (addValidatorsFromAssembly)
             {
-                services.AddValidatorsFromAssemblyContaining(GetType());
+                services.AddValidatorsFromAssembly(GetType().Assembly);
             }
 
             var optionsBuilder = services.AddOptions<MyOptions>()
@@ -154,7 +154,7 @@ namespace IL.FluentValidation.Extensions.Options.Tests
             var services = new ServiceCollection();
             if (addValidatorsFromAssembly)
             {
-                services.AddValidatorsFromAssemblyContaining(GetType());
+                services.AddValidatorsFromAssembly(GetType().Assembly);
             }
 
             var optionsBuilder = services.AddOptions<MyOptions>()

@@ -25,12 +25,6 @@ variables:
   value: 'iron9light/FluentValidation.Extensions'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Use .NET 5'
-  inputs:
-    packageType: sdk
-    version: 5.x
-
 - script: dotnet tool install --tool-path . nbgv
   displayName: 'Install NBGV tool'
 

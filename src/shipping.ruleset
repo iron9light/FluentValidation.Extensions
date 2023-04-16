@@ -5,7 +5,7 @@
     <!-- XmlCommentAnalysisDisabled -->
     <Rule Id="SA0001"  Action="None" />
   </Rules>
-  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpacingRules">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.CSharp.SpacingRules">
     <!-- ClosingParenthesisMustBeSpacedCorrectly -->
     <Rule Id="SA1009" Action="None" />
   </Rules>
@@ -16,18 +16,26 @@
     <Rule Id="SX1101" Action="Warning" />
     <!-- ClosingParenthesisMustBeOnLineOfLastParameter -->
     <Rule Id="SA1111" Action="None" />
+    <!-- ClosingParenthesisMustBeOnLineOfOpeningParenthesis -->
+    <Rule Id="SA1112" Action="None" />
     <!-- ParameterMustNotSpanMultipleLines -->
     <Rule Id="SA1118" Action="None" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.OrderingRules">
     <!-- UsingDirectivesMustBePlacedCorrectly -->
     <Rule Id="SA1200" Action="None" />
+    <!-- ElementsMustBeOrderedByAccess -->
+    <Rule Id="SA1202" Action="None" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.NamingRules">
     <!-- FieldNamesMustNotBeginWithUnderscore -->
     <Rule Id="SA1309" Action="None" />
     <!-- FieldNamesMustBeginWithUnderscore -->
     <Rule Id="SX1309" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.CSharp.MaintainabilityRules">
+    <!-- FileMayOnlyContainASingleType -->
+    <Rule Id="SA1402" Action="None" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.DocumentationRules">
     <!-- ElementsMustBeDocumented -->

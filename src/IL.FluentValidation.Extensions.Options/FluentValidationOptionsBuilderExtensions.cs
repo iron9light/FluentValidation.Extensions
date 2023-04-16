@@ -134,5 +134,5 @@ public static class FluentValidationOptionsBuilderExtensions
     /// <returns>The wrapper of option builder with fluent style extension methods.</returns>
     public static FluentValidationOptionsBuilderWrapper<TOptions> FluentValidate<TOptions>(this OptionsBuilder<TOptions> optionsBuilder)
         where TOptions : class
-        => new FluentValidationOptionsBuilderWrapper<TOptions>(optionsBuilder);
+        => new(optionsBuilder);
 }

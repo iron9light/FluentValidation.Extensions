@@ -1,7 +1,6 @@
-namespace IL.FluentValidation.Extensions.Options.Tests
+namespace IL.FluentValidation.Extensions.Options.Tests;
+
+public class MyOptions
 {
-    public class MyOptions
-    {
-        public bool TrueValue { get; set; }
-    }
+    public bool TrueValue { get; set; }
 }

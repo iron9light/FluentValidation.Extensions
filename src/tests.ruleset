@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Tests analyzers rules" ToolsVersion="15.0">
   <Include Path="shipping.ruleset" Action="Default" />
-  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers">
-    <!-- Identifiers should not contain underscores -->
+  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers.Design">
+    <!-- ValidateArgumentsOfPublicMethods -->
+    <Rule Id="CA1062" Action="Info" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers.Naming">
+    <!-- IdentifiersShouldNotContainUnderscores -->
     <Rule Id="CA1707" Action="None" />
-    <!-- Mark members as static -->
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers.QualityGuidelines">
+    <!-- MarkMembersAsStatic -->
     <Rule Id="CA1822" Action="None" />
   </Rules>
   <Rules AnalyzerId="Microsoft.VisualStudio.Threading.Analyzers" RuleNamespace="Microsoft.VisualStudio.Threading.Analyzers">

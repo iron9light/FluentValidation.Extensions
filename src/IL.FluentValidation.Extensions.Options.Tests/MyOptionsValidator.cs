@@ -1,13 +1,12 @@
 using FluentValidation;
 
-namespace IL.FluentValidation.Extensions.Options.Tests
+namespace IL.FluentValidation.Extensions.Options.Tests;
+
+public class MyOptionsValidator
+    : AbstractValidator<MyOptions>
 {
-    public class MyOptionsValidator
-        : AbstractValidator<MyOptions>
+    public MyOptionsValidator()
     {
-        public MyOptionsValidator()
-        {
-            RuleFor(x => x.TrueValue).Equal(true);
-        }
+        RuleFor(x => x.TrueValue).Equal(true);
     }
 }
